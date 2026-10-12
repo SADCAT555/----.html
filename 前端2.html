@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>前端2.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="前端2题">前端2题</h1>
+<h2 id="任务一">任务一</h2>
+<p>我在微光招新网站使用F12键打开了开发者工具 看到了8个基础面板 并查询了它们各自的用途</p>
+<p><strong>1.元素</strong>     查看和编辑 DOM、CSS；查看盒模型、事件监听、无障碍信息</p>
+<p><strong>我的理解</strong>：在元素面板可以查看网页html的整体结构和css的内容 可以在网页里查看哪些文字或按钮对应哪段代码 似乎还可以临时改动文本 颜色之类的 但刷新后就恢复原样了</p>
+<p><strong>2.控制台</strong> 查看日志、错误、警告；直接执行 JavaScript；测试表达式</p>
+<p><strong>我的理解</strong>：查看bug之类的 肯定非常有用（）直接执行JS的话我现在还没学。以后就懂了（</p>
+<p><strong>3.源代码</strong> 查看页面加载的 HTML、CSS、JS；设置断点、单步调试、查看调用栈和作用域</p>
+<p><strong>我的理解</strong>：可以打断点让代码一步步执行来排除错误 应该也是非常重要吧</p>
+<p><strong>4.网络</strong> 查看所有请求；状态码、请求头、响应头、载荷、耗时、瀑布流；限速模拟</p>
+<p><strong>我的理解</strong>：查看网页加载时发送的请求 在图片加载不出来的时候很有用</p>
+<p><strong>5.性能</strong> 录制运行时性能；分析 CPU、帧率、长任务、主线程活动</p>
+<p><strong>我的理解</strong>：显示了LCP CLS INP之类的性能数据</p>
+<p><strong>6.应用程序</strong> 查看 LocalStorage、SessionStorage、IndexedDB、Cookie、缓存、Service Worker、Manifest</p>
+<p><strong>我的理解</strong>：可以查看看 Cookie、缓存、LocalStorage、登录状态什么的 额</p>
+<p><strong>7.安全性</strong> 查看 HTTPS 状态、证书信息、混合内容问题</p>
+<p><strong>我的理解</strong>：检查这个网页安不安全</p>
+<p><strong>8.Lighthouse</strong> 生成性能、可访问性、最佳实践、SEO、PWA 报告</p>
+<p><strong>我的理解</strong>：可以生成一张报表 分析页面负载</p>
+<p>整体了解后 我觉得<strong>元素，控制台，源代码</strong>都对前端开发非常重要</p>
+<h2 id="任务二">任务二</h2>
+<p>刷新后更改被撤销了 原因应该是：我们在开发者工具中的更改并没有触及到源文件 刷新之后 html文件重新启动 依然是按照源代码 因此我们的更改消失了。元素面板应该只是用来调试的 比如看看网页如何更改会更好看。如果任何人都可以更改任何公共网页 那网站安全性几乎为零。</p>
+<p>在b站个人中心打开开发者工具 查看了控制台面板 我看到了b站的运行日志 和一些问题报告
+然后是百万粉丝展示（？）</p>
+<p><img src="屏幕截图 2026-10-11 134151.png" alt="展示"></p>
+<h2 id="任务三">任务三</h2>
+<p>Cookie是一段数据 当我访问网站时 服务器会给浏览器发送一段cookie 如果我允许网站使用cookie 那么网站就会将其保存 我以后再次访问时 服务器就知道是我了</p>
+<p>使用cookie能让网站记住我是谁 这样刷新网站或是进入其他子页面时 就无需重新登录了</p>
+<p>cookie可以在开发者工具里的应用程序查看</p>
+<p>我不知道这些cookie有什么意思（笑）所以我找ai问了问 其中有个叫SESSDATA的 ds说这就是我登录b站后服务器给我的身份证 有了这个cookie 服务器就能知道我是已登录的某某用户</p>
+<p>如果有人拿到了我的cookie 根据cookie的作用 我猜测这个小偷能在网站中伪装成是我 看到我的空间 或者把我的币全部投掉（）但是应该只能临时冒充我的账号 在我退出我的登录后 他也没法用了 也没法盗走我的账号</p>
+<h2 id="任务四">任务四</h2>
+<p>我还是在b站的个人空间打开开发者工具。刷新后 我看到大部分请求是GET。询问ai得知 GET主要是获取已有资源 如HTML页面等；POST则主要是用户主动提交数据时出现。</p>
+<p>大部分状态码为200 意思是请求被正常回应 404是著名的错误码 指没找到资源。我还看到部分304 意思是缓存有效 没重新下载点开请求后，在 Response Headers 中看到 Content-Type: text/html; charset=utf-8，它告诉浏览器返回的是 HTML 文档，字符集是 UTF-8，浏览器应按网页解析并正确显示中文。</p>
+
+</body>
+</html>

@@ -1,0 +1,111 @@
+/* 让元素的宽度包含内边距和边框，方便控制布局 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 整个页面的基础样式 */
+body {
+  margin: 0;
+
+  /* 上下留白 40px，左右留白 20px */
+  padding: 40px 20px;
+
+  font-family: Arial, "Microsoft YaHei", sans-serif;
+  color: #222;
+  background-color: #f5f7fa;
+}
+
+/* 外层容器：控制两块照片墙的位置 */
+.photo-walls {
+  width: 100%;
+  max-width: 1200px;
+
+  /* 内容在页面中水平居中 */
+  margin: 0 auto;
+
+  display: grid;
+
+  /* 默认上下排列，适用于小于 900px 的屏幕 */
+  grid-template-columns: minmax(0, 1fr);
+
+  /* 两块照片墙之间的距离 */
+  gap: 200px;
+
+  align-items: start;
+}
+
+/* 每块照片墙 */
+.wall {
+  /* 允许容器在较窄屏幕中缩小 */
+  min-width: 0;
+}
+
+/* 照片墙标题 */
+.wall h2 {
+  margin: 0 0 16px;
+  font-size: 24px;
+  line-height: 1.4;
+}
+
+/* 每块照片墙内部的图片排列 */
+.photo-grid {
+  display: grid;
+
+  /* 始终分成 5 个等宽的列 */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+
+  /* 图片之间的距离 */
+  gap: 8px;
+}
+
+/* 单个照片格子 */
+.photo {
+  position: relative;
+  min-width: 0;
+
+  /* 宽高比例为 1:1，也就是正方形 */
+  aspect-ratio: 1 / 1;
+
+  /* 圆角 */
+  border-radius: 6px;
+
+  /* 隐藏图片放大后超出格子的部分 */
+  overflow: hidden;
+
+  /* 图片加载前显示的背景色 */
+  background-color: #e2e7ee;
+}
+
+/* 格子里面的图片 */
+.photo img {
+  /* 让图片铺满照片格子 */
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  /* 保持图片比例，裁剪多余部分，不拉伸 */
+  object-fit: cover;
+
+  /* 默认显示图片中间的部分 */
+  object-position: center;
+
+  /* 图片放大时平滑过渡 */
+  transition: transform 0.3s ease;
+}
+
+/* 鼠标移到照片上时，图片放大到原来的 1.06 倍 */
+.photo:hover img {
+  transform: scale(1.06);
+}
+
+/* 屏幕宽度大于或等于 900px 时，两块照片墙左右并排 */
+@media (min-width: 900px) {
+  .photo-walls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
